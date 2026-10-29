@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sheet</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <strong class="brand">Sheet</strong>
+  <button id="bold" title="Bold (Ctrl+B)"><b>B</b></button>
+  <button id="importBtn">Open CSV</button>
+  <button id="exportBtn">Save CSV</button>
+  <button id="clearBtn">Clear all</button>
+  <input type="file" id="file" accept=".csv" hidden>
+</header>
+<div class="fbar"><span id="addr">A1</span><input id="fx" aria-label="Formula bar" autocomplete="off"></div>
+<main id="wrap"><table id="grid"></table></main>
+<script src="formulas.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

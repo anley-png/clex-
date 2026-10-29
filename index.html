@@ -7,16 +7,34 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <strong class="brand">Sheet</strong>
-  <button id="bold" title="Bold (Ctrl+B)"><b>B</b></button>
-  <button id="importBtn">Open CSV</button>
-  <button id="exportBtn">Save CSV</button>
-  <button id="clearBtn">Clear all</button>
-  <input type="file" id="file" accept=".csv" hidden>
+<header><strong class="brand">Sheet</strong>
+  <nav id="tabs"><button data-t="file">File</button><button data-t="home" class="on">Home</button><button data-t="insert">Insert</button></nav>
 </header>
+<div id="ribbon">
+  <section id="r-file" hidden>
+    <div class="grp"><button data-act="open">Open CSV</button><button data-act="export">Save CSV</button><button data-act="clearAll">Clear sheet</button><span class="gl">File</span></div>
+  </section>
+  <section id="r-home">
+    <div class="grp"><button data-act="undo" title="Undo (Ctrl+Z)">Undo</button><button data-act="redo" title="Redo (Ctrl+Y)">Redo</button><button data-act="copy">Copy</button><button data-act="cut">Cut</button><button data-act="paste">Paste</button><span class="gl">Clipboard</span></div>
+    <div class="grp"><select id="ff" data-act="ff" aria-label="Font"><option value="">Font</option><option value="sans">Sans</option><option value="serif">Serif</option><option value="mono">Mono</option></select>
+      <select id="fs" data-act="fs" aria-label="Size"><option value="">Size</option><option>10</option><option>12</option><option>14</option><option>18</option><option>24</option></select>
+      <button data-act="b" title="Bold (Ctrl+B)"><b>B</b></button><button data-act="i" title="Italic (Ctrl+I)"><i>I</i></button><button data-act="u" title="Underline (Ctrl+U)"><u>U</u></button>
+      <label class="clr">Text <input type="color" data-act="color" value="#000000"></label><label class="clr">Fill <input type="color" data-act="bg" value="#ffff99"></label><span class="gl">Font</span></div>
+    <div class="grp"><button data-act="al:left">Left</button><button data-act="al:center">Center</button><button data-act="al:right">Right</button><span class="gl">Alignment</span></div>
+    <div class="grp"><select data-act="nf" aria-label="Number format"><option value="">Number format</option><option value="g">General</option><option value="0.00">Number</option><option value="#,##0.00">Comma</option><option value="$#,##0.00">Currency</option><option value="0%">Percent</option><option value="yyyy-mm-dd">Date</option></select><span class="gl">Number</span></div>
+    <div class="grp"><button data-act="bd:1">All borders</button><button data-act="bd:0">No borders</button><button data-act="clearFmt">Clear format</button><span class="gl">Cells</span></div>
+  </section>
+  <section id="r-insert" hidden>
+    <div class="grp"><button data-act="table">Table</button><span class="gl">Tables</span></div>
+    <div class="grp"><button data-act="chart:column">Column</button><button data-act="chart:bar">Bar</button><button data-act="chart:line">Line</button><button data-act="chart:pie">Pie</button><span class="gl">Charts (select data first)</span></div>
+    <div class="grp"><button data-act="checkbox">Checkbox</button><button data-act="link">Link</button><button data-act="comment">Comment</button>
+      <select data-act="sym" aria-label="Symbol"><option value="">Symbol</option><option>©</option><option>®</option><option>™</option><option>°</option><option>±</option><option>×</option><option>÷</option><option>≤</option><option>≥</option><option>≠</option><option>π</option><option>Σ</option><option>€</option><option>£</option><option>¥</option><option>✓</option><option>✗</option><option>★</option></select><span class="gl">Insert</span></div>
+  </section>
+</div>
 <div class="fbar"><span id="addr">A1</span><input id="fx" aria-label="Formula bar" autocomplete="off"></div>
-<main id="wrap"><table id="grid"></table></main>
+<div id="body"><main id="wrap"><table id="grid"></table></main><aside id="charts" hidden></aside></div>
+<footer id="sheets"></footer>
+<input type="file" id="file" accept=".csv" hidden>
 <script src="formulas.js"></script>
 <script src="app.js"></script>
 </body>
